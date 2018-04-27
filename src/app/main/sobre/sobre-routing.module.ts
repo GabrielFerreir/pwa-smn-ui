@@ -4,6 +4,7 @@ import {SobreComponent} from './sobre.component';
 export const SOBRE_ROUTES: Routes = [
   {
     path: 'sobre',
-    component: SobreComponent
+    component: SobreComponent,
+    data: { animation: 'sobre' }
   }
 ];
