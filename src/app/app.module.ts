@@ -6,6 +6,8 @@ import { AppComponent } from './app.component';
 
 import { environment } from '../environments/environment';
 import {SharedModule} from './shared.module';
+import {AppRoutingModule} from './app-routing.module';
+import {MainModule} from './main/main.module';
 
 @NgModule({
   declarations: [
@@ -13,7 +15,9 @@ import {SharedModule} from './shared.module';
   ],
   imports: [
     SharedModule,
-    ServiceWorkerModule.register('/ngsw-worker.js', { enabled: environment.production })
+    ServiceWorkerModule.register('/ngsw-worker.js', { enabled: environment.production }),
+    AppRoutingModule,
+    MainModule
   ],
   providers: [],
   bootstrap: [AppComponent],

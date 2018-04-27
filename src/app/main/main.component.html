@@ -1,0 +1,29 @@
+<ui-toolbar class="fixed flat elevate-on-scroll primary elevate-on-s960" id="app-header">
+  <button (click)="menuOpen = true" class="ui-button flat icon" uiRipple>
+    <i class="material-icons">menu</i>
+  </button>
+  <span class="title">{{title}}</span>
+  <div class="align-right">
+    <button class="ui-button flat icon" uiRipple>
+      <i class="material-icons">notifications</i>
+      <span class="badge">2</span>
+    </button>
+  </div>
+</ui-toolbar>
+<ui-nav-drawer [(open)]="menuOpen">
+  <ui-toolbar class="flat">
+    <button (click)="menuOpen = false" class="ui-button flat icon" uiRipple>
+      <i class="material-icons">menu</i>
+    </button>
+    <div class="logo">
+
+    </div>
+  </ui-toolbar>
+  <div class="ui-nav-drawer-overflow">
+    <div class="ui-list">
+      <a class="ui-list-item" uiRipple routerLink="/" [routerLinkActive]="['active']" [routerLinkActiveOptions]="{ exact: true }">Home</a>
+      <a class="ui-list-item" uiRipple routerLink="/sobre" [routerLinkActive]="['active']" [routerLinkActiveOptions]="{ exact: true }">Sobre</a>
+    </div>
+  </div>
+</ui-nav-drawer>
+<router-outlet *ngIf="readyToGo"></router-outlet>
