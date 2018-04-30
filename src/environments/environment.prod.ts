@@ -1,4 +1,4 @@
 export const environment = {
   production: true,
-  apiNotification: 'http://192.168.1.6:3000/'
+  apiNotification: 'http://18.188.21.107:3000/push'
 };
