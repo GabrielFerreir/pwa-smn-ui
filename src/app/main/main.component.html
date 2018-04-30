@@ -27,6 +27,6 @@
     </div>
   </div>
 </ui-nav-drawer>
-<div [@routerAnimation]="getRouteAnimation(route)" *ngIf="readyToGo">
+<main [@routerAnimation]="getRouteAnimation(route)" *ngIf="readyToGo">
   <router-outlet #route="outlet"></router-outlet>
-</div>
+</main>
