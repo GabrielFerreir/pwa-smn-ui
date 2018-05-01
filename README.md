@@ -25,3 +25,16 @@ Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protrac
 ## Further help
 
 To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
+
+### NotificationClick
+
+Para ativar os clicks na notificaço adicione o codigo abaixo no arquivo "node_modules/@angular/service-worker/ngsw-worker.js"
+apos o this.scope.addEventListener('push', (event) 
+
+    this.scope.addEventListener('notificationclick', (event) => {
+        console.log('[Service Worker] Notification click Received. event:%s', event);
+        event.notification.close();
+        if (clients.openWindow && event.notification.data.url) {
+            event.waitUntil(clients.openWindow(event.notification.data.url));
+        }
+    });
