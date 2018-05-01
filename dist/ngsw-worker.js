@@ -1772,12 +1772,11 @@ class Driver {
         this.idle = new IdleScheduler(this.adapter, IDLE_THRESHOLD, this.debugger);
 
         this.scope.addEventListener('notificationclick', (event) => {
-            console.log('[Service Worker] Notification click Received. event:%s', event);
             event.notification.close();
-            if (clients.openWindow) {
-              event.waitUntil(clients.openWindow('https://google.com'));
+            if (clients.openWindow && event.notification.data.url) {
+                event.waitUntil(clients.openWindow(event.notification.data.url));
             }
-          });
+        });
     }
     /**
      * The handler for fetch events.
