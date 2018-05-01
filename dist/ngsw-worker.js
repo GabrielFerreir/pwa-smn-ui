@@ -1770,6 +1770,14 @@ class Driver {
         this.debugger = new DebugHandler(this, this.adapter);
         // The IdleScheduler will execute idle tasks after a given delay.
         this.idle = new IdleScheduler(this.adapter, IDLE_THRESHOLD, this.debugger);
+
+        this.scope.addEventListener('notificationclick', (event) => {
+            console.log('[Service Worker] Notification click Received. event:%s', event);
+            event.notification.close();
+            if (clients.openWindow) {
+              event.waitUntil(clients.openWindow('https://google.com'));
+            }
+          });
     }
     /**
      * The handler for fetch events.
