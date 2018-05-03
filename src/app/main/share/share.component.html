@@ -1,0 +1,33 @@
+<div class="ui-s960">
+  <ui-card class="elevate-on-toolbar">
+    <ui-toolbar class="flat">
+      <button class="ui-button flat icon" type="button" uiRipple (click)="_location.back()">
+        <i class="material-icons">arrow_back</i>
+      </button>
+      <span class="title" [ngClass]="{'hide': searchOpen}">Share</span>
+      <div class="align-right">
+        <form #searchForm="ngForm" name="searchForm" class="ui-validate on-dirty"
+              [ngClass]="{'open': searchOpen}">
+          <ui-input-container>
+            <input #searchFormText="ngModel" type="text" name="searchText" [(ngModel)]="searchText"
+                   uiMaxlength="200" uiInput [persistPlaceholder]="true" placeholder="Pesquisa">
+            <div class="ui-messages">
+              <div *ngIf="searchFormText.errors && searchFormText.dirty">
+                <div class="ui-message counter error">
+                  {{searchText ? searchText.length : 0}}/200
+                </div>
+              </div>
+            </div>
+          </ui-input-container>
+        </form>
+        <button class="ui-button flat icon search" uiRipple (click)="toggleSearch()">
+          <i class="material-icons" [ngClass]="{'show': !searchOpen}">search</i>
+          <i class="material-icons" [ngClass]="{'show': searchOpen}">close</i>
+        </button>
+        <button class="ui-button flat icon" uiRipple (click)="share()">
+          <i class="material-icons">share</i>
+        </button>
+      </div>
+    </ui-toolbar>
+  </ui-card>
+</div>
